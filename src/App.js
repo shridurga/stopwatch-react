@@ -18,7 +18,7 @@ function App() {
     return () => clearInterval(interval);
   }, [running]);
 
-  // Apply dark mode class to the entire body
+  // Apply dark mode class to the body
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark-mode-body");
@@ -29,9 +29,11 @@ function App() {
 
   return (
     <div className="stopwatch-container">
-      <button className="toggle-theme" onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </button>
+      {/* Dark Mode Toggle Switch */}
+      <label className="switch">
+        <input type="checkbox" checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+        <span className="slider"></span>
+      </label>
 
       <h1 className="title">Stopwatch</h1>
 
