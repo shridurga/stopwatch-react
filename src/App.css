@@ -1,12 +1,20 @@
-/* General Styles */
+/* Apply dark mode to the full body */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Dark Mode Body - Covers full screen */
+.dark-mode-body {
+  background-color: #1e1e1e;
+  color: white;
 }
 
 /* Stopwatch Container */
@@ -16,13 +24,13 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Title */
-.title {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
+/* Ensure Dark Mode Covers Everything */
+.dark-mode-body .stopwatch-container {
+  background: #222;
+  color: white;
 }
 
 /* Timer Display */
@@ -35,6 +43,11 @@ body {
   border-radius: 5px;
   display: inline-block;
   margin-bottom: 20px;
+}
+
+.dark-mode-body .timer-display {
+  background: #444;
+  color: white;
 }
 
 /* Buttons */
@@ -53,32 +66,13 @@ button {
   transition: 0.3s;
 }
 
-/* Start Button */
-.start-btn {
-  background: #4caf50;
+/* Dark Mode Toggle Button */
+.toggle-theme {
+  background: #000;
   color: white;
+  margin-bottom: 15px;
 }
 
-.start-btn:hover {
-  background: #45a049;
-}
-
-/* Stop Button */
-.stop-btn {
-  background: #f44336;
-  color: white;
-}
-
-.stop-btn:hover {
-  background: #d32f2f;
-}
-
-/* Reset Button */
-.reset-btn {
-  background: #2196f3;
-  color: white;
-}
-
-.reset-btn:hover {
-  background: #1976d2;
+.toggle-theme:hover {
+  background: #333;
 }

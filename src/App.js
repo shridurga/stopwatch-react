@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -17,14 +18,29 @@ function App() {
     return () => clearInterval(interval);
   }, [running]);
 
+  // Apply dark mode class to the entire body
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode-body");
+    } else {
+      document.body.classList.remove("dark-mode-body");
+    }
+  }, [darkMode]);
+
   return (
     <div className="stopwatch-container">
+      <button className="toggle-theme" onClick={() => setDarkMode(!darkMode)}>
+        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+      </button>
+
       <h1 className="title">Stopwatch</h1>
+
       <div className="timer-display">
         <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
         <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
       </div>
+
       <div className="buttons">
         {running ? (
           <button className="stop-btn" onClick={() => setRunning(false)}>Stop</button>
